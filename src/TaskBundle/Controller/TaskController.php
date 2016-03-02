@@ -69,4 +69,14 @@ class TaskController extends Controller
 
         return ['tasks' => $tasks];
     }
+    /**
+     * @Route("/task/{id}", name="showTask")
+     * @Template("TaskBundle:Task:oneTask.html.twig")
+     */
+    public function showTaskAction($id){
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $task = $repo->find($id);
+
+        return['task' => $task];
+    }
 }

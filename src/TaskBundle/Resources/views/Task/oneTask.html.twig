@@ -1,0 +1,20 @@
+<p>Tytuł: {{ task.title }}</p>
+<p>Treść: {{ task.description }}</p>
+<p>Autor: {{ task.taskOwner }}</p>
+<p>Status: {{ task.taskStatus }}</p>
+<p>Data utworzenia zadania: {{ task.createDate|date('Y-m-d H:i:s') }}</p>
+<p>Termin realizacji:
+{% if task.dueDate != null %}
+    {{ task.dueDate|date('Y-m-d H:i:s') }}
+{% else %}
+    Brak
+{% endif %}
+</p>
+<p>Osoby przypisane do zadania:
+<ul>
+    {% for user in task.taskUsers%}
+        <li>{{ user.username }}</li>
+    {% endfor %}
+</ul>
+</p>
+<p>Projekt: {{ task.project }}</p>

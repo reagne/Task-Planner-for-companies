@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <td>
-                {{ task.title }}
+                <a href="{{ path('showTask', {'id':task.id}) }}">{{ task.title }}</a>
             </td>
             <td>
                 {{ task.taskOwner }}
@@ -26,7 +26,9 @@
                 {{ task.taskStatus }}
             </td>
             <td>
-                {{ task.dueDate|date('Y-m-d H:i:s') }}
+                {% if task.dueDate != null %}
+                    {{ task.dueDate|date('Y-m-d H:i:s') }}
+                {% endif %}
             </td>
             <td>
 
