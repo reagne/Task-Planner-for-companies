@@ -112,6 +112,20 @@ class TaskController extends Controller
 
         return $this->redirectToRoute('showTask', ['id' => $id]);
     }
+    /**
+     * @Route("/task/{id}/remove", name="removeTask")
+     *
+     */
+    public function removeTaskAction($id){
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $task = $repo->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($task);
+        $em->flush();
+
+        return $this->redirectToRoute('main');
+    }
 
     // STATUSY
 

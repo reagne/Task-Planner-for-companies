@@ -20,4 +20,5 @@
 <p>Projekt: {{ task.project }}</p>
 {% if task.taskOwner == app.user.username %}
     <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+    <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
 {% endif %}
