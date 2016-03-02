@@ -18,6 +18,7 @@ class TaskController extends Controller
         $form = $this->createFormBuilder($task);
         $form->add('title', 'text', ['label' => 'Tytuł: ']);
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
+        $form->add('taskStatus', 'entity', ['label' => 'Wybierz status: ', 'class' => 'TaskBundle\Entity\Task_Status', 'choice_label' => 'name', 'expanded' => 'true', 'multiple' =>'false']);
         $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => 'true', 'multiple' =>'true']);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('save', 'submit', ['label' => 'Zapisz']);
@@ -67,7 +68,8 @@ class TaskController extends Controller
     public function allTasksAction(){
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
-        $tasks = $repo->findAllByDueDate($user);
+
+        $tasks = $repo->findAllTasksByDueDate($user);
 
         return ['tasks' => $tasks];
     }
