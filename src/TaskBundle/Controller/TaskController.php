@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use TaskBundle\Entity\Task;
+use TaskBundle\Entity\Task_Status;
 use TaskBundle\Entity\User;
 
 class TaskController extends Controller
@@ -111,4 +112,99 @@ class TaskController extends Controller
 
         return $this->redirectToRoute('showTask', ['id' => $id]);
     }
+
+    // STATUSY
+
+    private function statusForm($status, $action){
+        $form = $this->createFormBuilder($status);
+        $form->add('name', 'text', ['label' => 'Nazwa: ']);
+        $form->add('save', 'submit', ['label' => 'Zapisz']);
+        $form->setAction($action);
+        $statusForm = $form->getForm();
+
+        return $statusForm;
+    }
+
+    /**
+     * @Route("/addStatus", name="addStatus")
+     * @Template("TaskBundle:Task:newStatus.html.twig")
+     */
+    public function newStatusAction(){
+        $status = new Task_Status();
+        $statusForm = $this->statusForm($status,$this->generateUrl('createStatus'));
+
+        return['status' => $statusForm->createView()];
+    }
+    /**
+     * @Route("/createStatus", name="createStatus")
+     */
+    public function createStatusAction(Request $req){
+        $status = new Task_Status();
+        $statusForm = $this->statusForm($status, $this->generateUrl('createStatus'));
+        $statusForm->handleRequest($req);
+
+        if ($statusForm->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($status);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('allStatus');
+    }
+    /**
+    * @Route ("/status", name="allStatus")
+    * @Template("TaskBundle:Task:allStatus.html.twig")
+    *
+    */
+    public function allStatusAction(){
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
+        $statuses = $repo->findAll();
+
+        return ['statuses' => $statuses];
+    }
+    /**
+     * @Route("/status/{id}", name="statusToEdit")
+     * @Method("GET")
+     * @Template("TaskBundle:Task:newStatus.html.twig")
+     */
+    public function statusToEditAction($id){
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
+        $status = $repo->find($id);
+        $statusForm = $this->statusForm($status, $this->generateUrl('editStatus', ['id' => $id]));
+
+        return['status' => $statusForm->createView()];
+    }
+    /**
+     * @Route("/status/{id}", name="editStatus")
+     * @Method("POST")
+     */
+    public function editStatusAction(Request $req, $id)
+    {
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
+        $status = $repo->find($id);
+
+        $statusForm = $this->statusForm($status, $this->generateUrl('editStatus', ['id' => $id]));
+        $statusForm->handleRequest($req);
+
+        if ($statusForm->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('allStatus');
+    }
+    /**
+     * @Route("/status/{id}/remove", name="removeStatus")
+     */
+    public function removeStatusAction($id){
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
+        $status = $repo->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($status);
+        $em->flush();
+
+        return $this->redirectToRoute('allStatus');
+    }
+
 }
