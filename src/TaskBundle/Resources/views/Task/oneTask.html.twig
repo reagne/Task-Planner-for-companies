@@ -18,3 +18,6 @@
 </ul>
 </p>
 <p>Projekt: {{ task.project }}</p>
+{% if task.taskOwner == app.user.username %}
+    <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+{% endif %}
