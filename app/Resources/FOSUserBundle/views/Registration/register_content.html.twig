@@ -1,0 +1,33 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST">
+    <div class="form-group" id="fos_user_registration_form">
+        Email:<br>
+        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'email' } }) }}
+        {{ form_errors(form.email) }}
+
+        <br><br>
+        Twoja nazwa użytkownika:<br>
+        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'username' } }) }}
+        {{ form_errors(form.username) }}
+
+        <br><br>
+        Hasło:<br>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'password' } }) }}
+        {{ form_errors(form.plainPassword.first) }}
+
+        <br><br>
+        Powtórz hasło:<br>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'password2'} }) }}
+        {{ form_errors(form.plainPassword.second) }}
+
+        <br><br>
+        Dział:<br>
+        {{ form_widget(form.section, { 'attr': {'class': 'form-control', 'placeholder': 'section' } }) }}
+        {{ form_rest(form) }}
+
+    </div>
+    <div>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Zapisz">
+    </div>
+</form>

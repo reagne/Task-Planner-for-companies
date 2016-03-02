@@ -21,7 +21,7 @@ class User extends BaseUser
      *
      * @ORM\Column(name="section", type="string")
      */
-    protected $section;
+    protected $section = null;
 
     /**
      * @ORM\OneToMany(targetEntity="Task", mappedBy="taskOwner")

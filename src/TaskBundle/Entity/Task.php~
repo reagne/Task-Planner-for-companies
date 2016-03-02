@@ -47,14 +47,14 @@ class Task
      *
      * @ORM\Column(name="due_date", type="datetime")
      */
-    private $dueDate;
+    private $dueDate = null;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end_date", type="datetime")
      */
-    private $endDate;
+    private $endDate = null;
 
     /**
      *
@@ -210,5 +210,148 @@ class Task
     public function getEndDate()
     {
         return $this->endDate;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->taskUsers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \TaskBundle\Entity\Comment $comments
+     * @return Task
+     */
+    public function addComment(\TaskBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \TaskBundle\Entity\Comment $comments
+     */
+    public function removeComment(\TaskBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Set taskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $taskStatus
+     * @return Task
+     */
+    public function setTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus = null)
+    {
+        $this->taskStatus = $taskStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get taskStatus
+     *
+     * @return \TaskBundle\Entity\Task_Status 
+     */
+    public function getTaskStatus()
+    {
+        return $this->taskStatus;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \TaskBundle\Entity\Project $project
+     * @return Task
+     */
+    public function setProject(\TaskBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \TaskBundle\Entity\Project 
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * Set taskOwner
+     *
+     * @param \TaskBundle\Entity\User $taskOwner
+     * @return Task
+     */
+    public function setTaskOwner(\TaskBundle\Entity\User $taskOwner = null)
+    {
+        $this->taskOwner = $taskOwner;
+
+        return $this;
+    }
+
+    /**
+     * Get taskOwner
+     *
+     * @return \TaskBundle\Entity\User 
+     */
+    public function getTaskOwner()
+    {
+        return $this->taskOwner;
+    }
+
+    /**
+     * Add taskUsers
+     *
+     * @param \TaskBundle\Entity\User $taskUsers
+     * @return Task
+     */
+    public function addTaskUser(\TaskBundle\Entity\User $taskUsers)
+    {
+        $this->taskUsers[] = $taskUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove taskUsers
+     *
+     * @param \TaskBundle\Entity\User $taskUsers
+     */
+    public function removeTaskUser(\TaskBundle\Entity\User $taskUsers)
+    {
+        $this->taskUsers->removeElement($taskUsers);
+    }
+
+    /**
+     * Get taskUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTaskUsers()
+    {
+        return $this->taskUsers;
     }
 }

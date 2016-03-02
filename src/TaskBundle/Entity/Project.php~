@@ -203,4 +203,124 @@ class Project
     {
         return $this->endDate;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projectUsers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set projectStatus
+     *
+     * @param \TaskBundle\Entity\Project_Status $projectStatus
+     * @return Project
+     */
+    public function setProjectStatus(\TaskBundle\Entity\Project_Status $projectStatus = null)
+    {
+        $this->projectStatus = $projectStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get projectStatus
+     *
+     * @return \TaskBundle\Entity\Project_Status 
+     */
+    public function getProjectStatus()
+    {
+        return $this->projectStatus;
+    }
+
+    /**
+     * Add tasks
+     *
+     * @param \TaskBundle\Entity\Task $tasks
+     * @return Project
+     */
+    public function addTask(\TaskBundle\Entity\Task $tasks)
+    {
+        $this->tasks[] = $tasks;
+
+        return $this;
+    }
+
+    /**
+     * Remove tasks
+     *
+     * @param \TaskBundle\Entity\Task $tasks
+     */
+    public function removeTask(\TaskBundle\Entity\Task $tasks)
+    {
+        $this->tasks->removeElement($tasks);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+
+    /**
+     * Set projectOwner
+     *
+     * @param \TaskBundle\Entity\User $projectOwner
+     * @return Project
+     */
+    public function setProjectOwner(\TaskBundle\Entity\User $projectOwner = null)
+    {
+        $this->projectOwner = $projectOwner;
+
+        return $this;
+    }
+
+    /**
+     * Get projectOwner
+     *
+     * @return \TaskBundle\Entity\User 
+     */
+    public function getProjectOwner()
+    {
+        return $this->projectOwner;
+    }
+
+    /**
+     * Add projectUsers
+     *
+     * @param \TaskBundle\Entity\User $projectUsers
+     * @return Project
+     */
+    public function addProjectUser(\TaskBundle\Entity\User $projectUsers)
+    {
+        $this->projectUsers[] = $projectUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove projectUsers
+     *
+     * @param \TaskBundle\Entity\User $projectUsers
+     */
+    public function removeProjectUser(\TaskBundle\Entity\User $projectUsers)
+    {
+        $this->projectUsers->removeElement($projectUsers);
+    }
+
+    /**
+     * Get projectUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjectUsers()
+    {
+        return $this->projectUsers;
+    }
 }
