@@ -17,7 +17,7 @@ class TaskController extends Controller
         $form->add('title', 'text', ['label' => 'Tytuł: ']);
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
         $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => 'true', 'multiple' =>'true']);
-        $form->add('end_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
+        $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('save', 'submit', ['label' => 'Dodaj zadanie']);
         $form->setAction($this->generateUrl('createTask'));
         $taskForm = $form->getForm();
@@ -55,5 +55,18 @@ class TaskController extends Controller
         }
 
         return new Response('Stworzono zadanie');
+    }
+
+    /**
+     * @Route ("/", name="main")
+     * @Template("TaskBundle:Task:allTask.html.twig")
+     *
+     */
+    public function allTasksAction(){
+        $user = $this->getUser();
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $tasks = $repo->findAllByDueDate($user);
+
+        return ['tasks' => $tasks];
     }
 }

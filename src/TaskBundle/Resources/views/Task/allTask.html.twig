@@ -1,0 +1,38 @@
+{% for task in tasks %}
+    <table>
+        <tr>
+            <td>
+                Tytuł zadania
+            </td>
+            <td>
+                Autor zadania
+            </td>
+            <td>
+                Status zadania
+            </td>
+            <td>
+                Termin
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                {{ task.title }}
+            </td>
+            <td>
+                {{ task.taskOwner }}
+            </td>
+            <td>
+                {{ task.taskStatus }}
+            </td>
+            <td>
+                {{ task.dueDate|date('Y-m-d H:i:s') }}
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+{% else %}
+    <p>Nie masz żadnych zadań do wykonania</p>
+{% endfor %}

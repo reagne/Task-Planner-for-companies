@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class TaskRepository extends EntityRepository
 {
+    public function findAllByDueDate($user){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT t FROM TaskBundle:Task t
+            WHERE t.taskOwner = :user
+            ORDER BY t.dueDate ASC')
+            ->setParameter('user', $user);
+        return $query->getResult();
+    }
 }
