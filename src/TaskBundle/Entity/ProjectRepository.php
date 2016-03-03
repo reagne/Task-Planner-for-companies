@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProjectRepository extends EntityRepository
 {
+    public function findAllProjectsByDueDate($user)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT p FROM TaskBundle:Project p
+            JOIN p.projectUsers u
+            WHERE u = :user OR p.projectOwner = :user
+            ORDER BY p.dueDate ASC')
+            ->setParameter('user', $user);
+        return $query->getResult();
+    }
 }

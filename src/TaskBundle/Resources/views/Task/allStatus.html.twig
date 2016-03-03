@@ -1,6 +1,6 @@
 {% for status in statuses %}
 <p>{{ status.name }}
-    <button onclick="location.href='{{ path('editStatus', {'id':status.id}) }}'">Edytuj</button>
-    <button onclick="location.href='{{ path('removeStatus', {'id':status.id}) }}'">Usuń</button>
+    <button onclick="location.href='{{ path('editStatusT', {'id':status.id}) }}'">Edytuj</button>
+    <button onclick="location.href='{{ path('removeStatusT', {'id':status.id}) }}'">Usuń</button>
 </p>
 {% endfor %}

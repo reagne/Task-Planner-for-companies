@@ -5,12 +5,11 @@ namespace TaskBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use TaskBundle\Entity\Task_Status;
 use TaskBundle\Entity\Project_Status;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use TaskBundle\Entity\Task;
-use TaskBundle\Entity\User;
 
 class StatusControllerController extends Controller
 {
@@ -24,7 +23,7 @@ class StatusControllerController extends Controller
         return $statusForm;
     }
 
-    // TASK STATUS
+//----------------- TASK STATUS -------------------------------------
 
     /**
      * @Route("task/addStatus", name="addStatusT")
@@ -108,7 +107,7 @@ class StatusControllerController extends Controller
         return $this->redirectToRoute('allStatusT');
     }
 
-    // PROJECT STATUS
+// ------------ PROJECT STATUS --------------------------------------------
 
     private function projectStatusForm($status, $action){
         $form = $this->createFormBuilder($status);
@@ -122,7 +121,7 @@ class StatusControllerController extends Controller
 
     /**
      * @Route("project/addStatus", name="addStatusP")
-     * @Template("TaskBundle:project:newStatus.html.twig")
+     * @Template("TaskBundle:Project:newStatus.html.twig")
      */
     public function newProjectStatusAction(){
         $status = new project_Status();
@@ -148,7 +147,7 @@ class StatusControllerController extends Controller
     }
     /**
      * @Route ("project/status", name="allStatusP")
-     * @Template("TaskBundle:project:allStatus.html.twig")
+     * @Template("TaskBundle:Project:allStatus.html.twig")
      *
      */
     public function allProjectStatusAction(){
@@ -160,7 +159,7 @@ class StatusControllerController extends Controller
     /**
      * @Route("project/status/{id}", name="statusToEditP")
      * @Method("GET")
-     * @Template("TaskBundle:project:newStatus.html.twig")
+     * @Template("TaskBundle:Project:newStatus.html.twig")
      */
     public function statusProjectToEditAction($id){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Project_Status');

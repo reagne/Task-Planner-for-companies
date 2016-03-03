@@ -5,7 +5,11 @@ namespace TaskBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use TaskBundle\Entity\Project;
+use TaskBundle\Entity\User;
 
 class ProjectController extends Controller
 {
@@ -52,11 +56,11 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('main');
+        return $this->redirectToRoute('Projects');
     }
 
     /**
-     * @Route ("/projects", name="projects")
+     * @Route ("/projects", name="Projects")
      * @Template("TaskBundle:Project:allProjects.html.twig")
      *
      */
@@ -69,11 +73,11 @@ class ProjectController extends Controller
         return ['projects' => $projects];
     }
     /**
-     * @Route("/project/{id}", name="showproject")
-     * @Template("TaskBundle:project:oneproject.html.twig")
+     * @Route("/project/{id}", name="showProject")
+     * @Template("TaskBundle:Project:oneProject.html.twig")
      */
     public function showprojectAction($id){
-        $repo = $this->getDoctrine()->getRepository('TaskBundle:project');
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
 
         return['project' => $project];
@@ -84,22 +88,22 @@ class ProjectController extends Controller
      * @Template("TaskBundle:Project:newProject.html.twig")
      */
     public function projectToEditAction($id){
-        $repo = $this->getDoctrine()->getRepository('TaskBundle:project');
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
-        $projectForm = $this->projectForm($project, $this->generateUrl('editproject', ['id' => $id]));
+        $projectForm = $this->projectForm($project, $this->generateUrl('editProject', ['id' => $id]));
 
         return['project' => $projectForm->createView()];
     }
     /**
-     * @Route("/project/{id}/edit", name="editproject")
+     * @Route("/project/{id}/edit", name="editProject")
      * @Method("POST")
      */
-    public function editprojectAction(Request $req, $id)
+    public function editProjectAction(Request $req, $id)
     {
-        $repo = $this->getDoctrine()->getRepository('TaskBundle:project');
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
 
-        $projectForm = $this->projectForm($project, $this->generateUrl('editproject',['id' => $id]));
+        $projectForm = $this->projectForm($project, $this->generateUrl('editProject',['id' => $id]));
         $projectForm->handleRequest($req);
 
         if ($projectForm->isSubmitted()) {
@@ -107,21 +111,21 @@ class ProjectController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('showproject', ['id' => $id]);
+        return $this->redirectToRoute('showProject', ['id' => $id]);
     }
     /**
-     * @Route("/project/{id}/remove", name="removeproject")
+     * @Route("/project/{id}/remove", name="removeProject")
      *
      */
     public function removeprojectAction($id){
-        $repo = $this->getDoctrine()->getRepository('TaskBundle:project');
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($project);
         $em->flush();
 
-        return $this->redirectToRoute('main');
+        return $this->redirectToRoute('Projects');
     }
 
 

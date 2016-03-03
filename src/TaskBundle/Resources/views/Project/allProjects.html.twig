@@ -1,0 +1,40 @@
+{% for project in projects %}
+    <table>
+        <tr>
+            <td>
+                Tytuł projektu
+            </td>
+            <td>
+                Autor projektu
+            </td>
+            <td>
+                Status projektu
+            </td>
+            <td>
+                Termin
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <a href="{{ path('showProject', {'id':project.id}) }}">{{ project.title }}</a>
+            </td>
+            <td>
+                {{ project.projectOwner }}
+            </td>
+            <td>
+                {{ project.projectStatus }}
+            </td>
+            <td>
+                {% if project.dueDate != null %}
+                    {{ project.dueDate|date('Y-m-d H:i:s') }}
+                {% endif %}
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+{% else %}
+    <p>Nie masz żadnych projektów</p>
+{% endfor %}

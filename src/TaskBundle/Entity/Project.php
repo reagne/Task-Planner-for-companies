@@ -45,14 +45,14 @@ class Project
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="due_date", type="datetime")
+     * @ORM\Column(name="due_date", type="datetime", nullable=true)
      */
     private $dueDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end_date", type="datetime")
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
     private $endDate;
 

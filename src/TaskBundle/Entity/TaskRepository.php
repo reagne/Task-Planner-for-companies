@@ -17,7 +17,7 @@ class TaskRepository extends EntityRepository
         $query = $em->createQuery('
             SELECT t FROM TaskBundle:Task t
             JOIN t.taskUsers u
-            WHERE u = :user
+            WHERE u = :user OR t.taskOwner = :user
             ORDER BY t.dueDate ASC')
             ->setParameter('user', $user);
         return $query->getResult();
