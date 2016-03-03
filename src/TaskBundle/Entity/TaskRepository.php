@@ -22,4 +22,22 @@ class TaskRepository extends EntityRepository
             ->setParameter('user', $user);
         return $query->getResult();
     }
+    public function findAllTasksWithActiveStatus(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT t FROM TaskBundle:Task t
+            JOIN t.taskStatus s
+            WHERE s.id != 1
+            ORDER BY t.dueDate ASC');
+        return $query->getResult();
+    }
+    public function findAllTasksNotActiveStatus(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT t FROM TaskBundle:Task t
+            JOIN t.taskStatus s
+            WHERE s.id = 1
+            ORDER BY t.dueDate ASC');
+        return $query->getResult();
+    }
 }

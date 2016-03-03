@@ -100,11 +100,24 @@ class TaskController extends Controller
      * @Template("TaskBundle:Task:allTask.html.twig")
      *
      */
-    public function allTasksAction(){
+    public function allActiveTasksAction(){
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
 
-        $tasks = $repo->findAllTasksByDueDate($user);
+        $tasks = $repo->findAllTasksWithActiveStatus($repo->findAllTasksByDueDate($user));
+
+        return ['tasks' => $tasks];
+    }
+    /**
+     * @Route ("/archive/task", name="archiveTask")
+     * @Template("TaskBundle:Task:allArchiveTask.html.twig")
+     *
+     */
+    public function allNotActiveTasksAction(){
+        $user = $this->getUser();
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+
+        $tasks = $repo->findAllTasksNotActiveStatus($repo->findAllTasksByDueDate($user));
 
         return ['tasks' => $tasks];
     }
@@ -196,6 +209,5 @@ class TaskController extends Controller
         return $this->redirectToRoute('main');
     }
 
-
-
+// ARCHIWUM - zadań zrealizowanych
 }

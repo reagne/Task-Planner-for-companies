@@ -14,26 +14,26 @@
         </td>
     </tr>
     {% for task in tasks %}
-        <tr>
-            <td>
-                <a href="{{ path('showTask', {'id':task.id}) }}">{{ task.title }}</a>
-            </td>
-            <td>
-                {{ task.taskOwner }}
-            </td>
-            <td>
-                {% if task.taskStatus != null %}
-                    {{ task.taskStatus.name }}
-                {% else %}
-                    Brak statusu
-                {% endif %}
-            </td>
-            <td>
-                {% if task.dueDate != null %}
-                    {{ task.dueDate|date('Y-m-d H:i:s') }}
-                {% endif %}
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <a href="{{ path('showTask', {'id':task.id}) }}">{{ task.title }}</a>
+                </td>
+                <td>
+                    {{ task.taskOwner }}
+                </td>
+                <td>
+                    {% if task.taskStatus != null %}
+                        {{ task.taskStatus.name }}
+                    {% else %}
+                        Brak statusu
+                    {% endif %}
+                </td>
+                <td>
+                    {% if task.dueDate != null %}
+                        {{ task.dueDate|date('Y-m-d H:i:s') }}
+                    {% endif %}
+                </td>
+            </tr>
         {% else %}
             <p>Nie masz żadnych zadań do wykonania</p>
     {% endfor %}
