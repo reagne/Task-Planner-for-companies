@@ -2,6 +2,7 @@
 
 namespace TaskBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -18,9 +19,27 @@ class TaskController extends Controller
         $form = $this->createFormBuilder($task);
         $form->add('title', 'text', ['label' => 'Tytuł: ']);
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
-        $form->add('taskStatus', 'entity', ['label' => 'Wybierz status: ', 'class' => 'TaskBundle\Entity\Task_Status', 'choice_label' => 'name', 'expanded' => false, 'multiple' => false]);
-        $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => true, 'multiple' => true]);
-        $form->add('project', 'entity', ['label' => 'Wybierz projekt: ', 'class' => 'TaskBundle\Entity\Project', 'choice_label' => 'title', 'expanded' => false, 'multiple' => false, 'required' => false]);
+        $form->add('taskStatus', 'entity', [
+            'label' => 'Wybierz status: ',
+            'class' => 'TaskBundle\Entity\Task_Status',
+            'query_builder' => function(EntityRepository $er){
+                  return $er->createQueryBuilder('t')->where('t.id != 1')->orderBy('t.name', 'ASC');},
+            'choice_label' => 'name',
+            'expanded' => false,
+            'multiple' => false]);
+        $form->add('taskUsers', 'entity', [
+            'label' => 'Wybierz użytkownika: ',
+            'class' => 'TaskBundle\Entity\User',
+            'choice_label' => 'username',
+            'expanded' => true,
+            'multiple' => true]);
+        $form->add('project', 'entity', [
+            'label' => 'Wybierz projekt: ',
+            'class' => 'TaskBundle\Entity\Project',
+            'choice_label' => 'title',
+            'expanded' => false,
+            'multiple' => false,
+            'required' => false]);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('save', 'submit', ['label' => 'Zapisz']);
         $form->setAction($action);
