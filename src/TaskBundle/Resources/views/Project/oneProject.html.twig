@@ -11,13 +11,16 @@
     {% endif %}
 </p>
 <p>Osoby przypisane do projektu:
-<ul>
-    {% for user in project.projectUsers%}
-        <li>{{ user.username }}</li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for user in project.projectUsers%}
+            <li>{{ user.username }}</li>
+        {% endfor %}
+    </ul>
+<p>Lista zadań przypisanych do projektu:</p>
+{{ include('TaskBundle:Task:allTask.html.twig') }}
+
 </p>
-{% if project.projectOwner == app.user.username %}
-    <button onclick="location.href='{{ path('editProject', {'id':project.id}) }}'">Edytuj projekt</button>
-    <button onclick="location.href='{{ path('removeProject', {'id':project.id}) }}'">Usuń projekt</button>
-{% endif %}
+    {% if project.projectOwner == app.user.username %}
+        <button onclick="location.href='{{ path('editProject', {'id':project.id}) }}'">Edytuj projekt</button>
+        <button onclick="location.href='{{ path('removeProject', {'id':project.id}) }}'">Usuń projekt</button>
+    {% endif %}

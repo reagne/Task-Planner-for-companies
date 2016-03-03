@@ -1,20 +1,19 @@
-{% for task in tasks %}
-    <table>
-        <tr>
-            <td>
-                Tytuł zadania
-            </td>
-            <td>
-                Autor zadania
-            </td>
-            <td>
-                Status zadania
-            </td>
-            <td>
-                Termin
-            </td>
-            <td></td>
-        </tr>
+<table>
+    <tr>
+        <td>
+            Tytuł zadania
+        </td>
+        <td>
+            Autor zadania
+        </td>
+        <td>
+            Status zadania
+        </td>
+        <td>
+            Termin
+        </td>
+    </tr>
+    {% for task in tasks %}
         <tr>
             <td>
                 <a href="{{ path('showTask', {'id':task.id}) }}">{{ task.title }}</a>
@@ -34,11 +33,8 @@
                     {{ task.dueDate|date('Y-m-d H:i:s') }}
                 {% endif %}
             </td>
-            <td>
-
-            </td>
         </tr>
-    </table>
-{% else %}
-    <p>Nie masz żadnych zadań do wykonania</p>
-{% endfor %}
+        {% else %}
+            <p>Nie masz żadnych zadań do wykonania</p>
+    {% endfor %}
+</table>

@@ -80,7 +80,10 @@ class ProjectController extends Controller
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
 
-        return['project' => $project];
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $tasks = $repo->findByProject($id);
+
+        return['project' => $project, 'tasks' => $tasks];
     }
     /**
      * @Route("/project/{id}/edit", name="projectToEdit")

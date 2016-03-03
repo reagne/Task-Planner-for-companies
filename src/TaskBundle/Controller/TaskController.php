@@ -90,13 +90,15 @@ class TaskController extends Controller
         return ['tasks' => $tasks];
     }
     /**
-     * @Route("/task/{id}", name="showTask")
+     * @Route("/task/{id}/{status}", name="showTask", defaults={"status" = null})
      * @Template("TaskBundle:Task:oneTask.html.twig")
      */
-    public function showTaskAction(Request $req, $id){
+    public function showTaskAction(Request $req, $id, $status){
+        // Pobranie zadanie
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
         $task = $repo->find($id);
 
+        // Opcja komentarzy
         $comment = new Comment();
         $commentForm = $this->commentForm($comment, $this->generateUrl('showTask', ['id' => $id]));
         $commentForm->createView();
@@ -115,6 +117,17 @@ class TaskController extends Controller
 
         $repo2 = $this->getDoctrine()->getRepository('TaskBundle:Comment');
         $comments = $repo2->findByTask($id);
+
+        // Wykonanie zadanie
+        if($status != null){
+            $repo3 = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
+            $taskStatus = $repo3->find($status);
+
+            $task->setTaskStatus($taskStatus);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+        }
 
         return['task' => $task, 'comment' => $commentForm->createView(), 'comments' => $comments];
     }
