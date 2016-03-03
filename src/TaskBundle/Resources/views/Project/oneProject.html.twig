@@ -1,7 +1,12 @@
 <p>Tytuł: {{ project.title }}</p>
 <p>Treść: {{ project.description }}</p>
 <p>Autor: {{ project.projectOwner }}</p>
-<p>Status: {{ project.projectStatus }}</p>
+<p>Status:
+    {% if project.projectStatus != null %}
+        {{ project.projectStatus.name }}
+    {% else %}
+        Brak
+    {% endif %}</p>
 <p>Data utworzenia zadania: {{ project.createDate|date('Y-m-d H:i:s') }}</p>
 <p>Termin realizacji:
     {% if project.dueDate != null %}
@@ -18,9 +23,9 @@
     </ul>
 <p>Lista zadań przypisanych do projektu:</p>
 {{ include('TaskBundle:Task:allTask.html.twig') }}
-
 </p>
     {% if project.projectOwner == app.user.username %}
         <button onclick="location.href='{{ path('editProject', {'id':project.id}) }}'">Edytuj projekt</button>
         <button onclick="location.href='{{ path('removeProject', {'id':project.id}) }}'">Usuń projekt</button>
+        <button onclick="location.href='{{ path('showProject', {'id':project.id, 'status':1}) }}'">Projekt zrealizowany</button>
     {% endif %}

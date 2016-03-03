@@ -2,6 +2,7 @@
 
 namespace TaskBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,6 +20,14 @@ class ProjectController extends Controller
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
         $form->add('projectUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => 'true', 'multiple' =>'true']);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
+        $form->add('projectStatus', 'entity', [
+            'label' => 'Wybierz status: ',
+            'class' => 'TaskBundle\Entity\Project_Status',
+            'query_builder' => function(EntityRepository $er){
+                return $er->createQueryBuilder('t')->where('t.id != 1')->orderBy('t.name', 'ASC');},
+            'choice_label' => 'name',
+            'expanded' => false,
+            'multiple' => false]);
         $form->add('save', 'submit', ['label' => 'Zapisz']);
         $form->setAction($action);
         $projectForm = $form->getForm();
@@ -50,8 +59,12 @@ class ProjectController extends Controller
         $projectForm = $this->projectForm($project, $this->generateUrl('createProject'));
         $projectForm->handleRequest($req);
 
+        $status = $projectForm->get('projectStatus')->getData();
+
         if ($projectForm->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
+            $project->setTaskStatus($status);
+            $status->addTask($project);
             $em->persist($project);
             $em->flush();
         }
@@ -73,15 +86,26 @@ class ProjectController extends Controller
         return ['projects' => $projects];
     }
     /**
-     * @Route("/project/{id}", name="showProject")
+     * @Route("/project/{id}/{status}", name="showProject", defaults={"status" = null})
      * @Template("TaskBundle:Project:oneProject.html.twig")
      */
-    public function showprojectAction($id){
+    public function showProjectAction($id, $status){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
         $project = $repo->find($id);
 
-        $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
-        $tasks = $repo->findByProject($id);
+        $repo2 = $this->getDoctrine()->getRepository('TaskBundle:Task');
+        $tasks = $repo2->findByProject($id);
+
+        // Wykonanie projektu
+        if($status != null){
+            $repo3 = $this->getDoctrine()->getRepository('TaskBundle:Project_Status');
+            $projectStatus = $repo3->find($status);
+
+            $project->setProjectStatus($projectStatus);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+        }
 
         return['project' => $project, 'tasks' => $tasks];
     }

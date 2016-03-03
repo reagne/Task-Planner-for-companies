@@ -26,7 +26,7 @@ class StatusControllerController extends Controller
 //----------------- TASK STATUS -------------------------------------
 
     /**
-     * @Route("task/addStatus", name="addStatusT")
+     * @Route("addStatus/task", name="addStatusT")
      * @Template("TaskBundle:Task:newStatus.html.twig")
      */
     public function newStatusAction(){
@@ -36,7 +36,7 @@ class StatusControllerController extends Controller
         return['status' => $statusForm->createView()];
     }
     /**
-     * @Route("task/createStatus", name="createStatusT")
+     * @Route("createStatus/task", name="createStatusT")
      */
     public function createStatusAction(Request $req){
         $status = new Task_Status();
@@ -52,7 +52,7 @@ class StatusControllerController extends Controller
         return $this->redirectToRoute('allStatusT');
     }
     /**
-     * @Route ("task/status", name="allStatusT")
+     * @Route ("status/task", name="allStatusT")
      * @Template("TaskBundle:Task:allStatus.html.twig")
      *
      */
@@ -63,7 +63,7 @@ class StatusControllerController extends Controller
         return ['statuses' => $statuses];
     }
     /**
-     * @Route("task/status/{id}", name="statusToEditT")
+     * @Route("status/task/{id}", name="statusToEditT")
      * @Method("GET")
      * @Template("TaskBundle:Task:newStatus.html.twig")
      */
@@ -75,7 +75,7 @@ class StatusControllerController extends Controller
         return['status' => $statusForm->createView()];
     }
     /**
-     * @Route("task/status/{id}", name="editStatusT")
+     * @Route("status/task/{id}", name="editStatusT")
      * @Method("POST")
      */
     public function editStatusAction(Request $req, $id)
@@ -94,7 +94,7 @@ class StatusControllerController extends Controller
         return $this->redirectToRoute('allStatusT');
     }
     /**
-     * @Route("task/status/{id}/remove", name="removeStatusT")
+     * @Route("status/task/{id}/remove", name="removeStatusT")
      */
     public function removeStatusAction($id){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
@@ -120,7 +120,7 @@ class StatusControllerController extends Controller
     }
 
     /**
-     * @Route("project/addStatus", name="addStatusP")
+     * @Route("addStatus/project", name="addStatusP")
      * @Template("TaskBundle:Project:newStatus.html.twig")
      */
     public function newProjectStatusAction(){
@@ -130,11 +130,11 @@ class StatusControllerController extends Controller
         return['status' => $statusForm->createView()];
     }
     /**
-     * @Route("project/createStatus", name="createStatusP")
+     * @Route("createStatus/project", name="createStatusP")
      */
     public function createProjectStatusAction(Request $req){
         $status = new project_Status();
-        $statusForm = $this->statusForm($status, $this->generateUrl('createProjectStatus'));
+        $statusForm = $this->statusForm($status, $this->generateUrl('createStatusP'));
         $statusForm->handleRequest($req);
 
         if ($statusForm->isSubmitted()) {
@@ -146,7 +146,7 @@ class StatusControllerController extends Controller
         return $this->redirectToRoute('allStatusP');
     }
     /**
-     * @Route ("project/status", name="allStatusP")
+     * @Route ("status/project", name="allStatusP")
      * @Template("TaskBundle:Project:allStatus.html.twig")
      *
      */
@@ -157,7 +157,7 @@ class StatusControllerController extends Controller
         return ['statuses' => $statuses];
     }
     /**
-     * @Route("project/status/{id}", name="statusToEditP")
+     * @Route("status/project/{id}", name="statusToEditP")
      * @Method("GET")
      * @Template("TaskBundle:Project:newStatus.html.twig")
      */
@@ -169,7 +169,7 @@ class StatusControllerController extends Controller
         return['status' => $statusForm->createView()];
     }
     /**
-     * @Route("project/status/{id}", name="editStatusP")
+     * @Route("status/project/{id}", name="editStatusP")
      * @Method("POST")
      */
     public function editProjectStatusAction(Request $req, $id)
@@ -188,7 +188,7 @@ class StatusControllerController extends Controller
         return $this->redirectToRoute('allStatusP');
     }
     /**
-     * @Route("project/status/{id}/remove", name="removeStatus")
+     * @Route("status/project/{id}/remove", name="removeStatusP")
      */
     public function removeProjectStatusAction($id){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Project_Status');

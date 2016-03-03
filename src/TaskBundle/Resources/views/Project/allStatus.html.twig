@@ -3,4 +3,6 @@
         <button onclick="location.href='{{ path('editStatusP', {'id':status.id}) }}'">Edytuj</button>
         <button onclick="location.href='{{ path('removeStatusP', {'id':status.id}) }}'">Usuń</button>
     </p>
+    {% else %}
+        Brak statusów
 {% endfor %}
