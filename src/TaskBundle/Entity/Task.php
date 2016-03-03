@@ -64,7 +64,7 @@ class Task
 
     /**
      * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="tasks")
-     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id", nullable=true)
      */
     private $taskStatus;
 

@@ -23,7 +23,11 @@
                 {{ task.taskOwner }}
             </td>
             <td>
-                {{ task.taskStatus }}
+                {% if task.taskStatus != null %}
+                    {{ task.taskStatus.name }}
+                {% else %}
+                    Brak statusu
+                {% endif %}
             </td>
             <td>
                 {% if task.dueDate != null %}

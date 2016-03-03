@@ -1,7 +1,13 @@
 <p>Tytuł: {{ task.title }}</p>
 <p>Treść: {{ task.description }}</p>
 <p>Autor: {{ task.taskOwner }}</p>
-<p>Status: {{ task.taskStatus }}</p>
+<p>Status:
+    {% if task.taskStatus != null %}
+        {{ task.taskStatus.name }}
+    {% else %}
+        Brak statusu
+    {% endif %}
+</p>
 <p>Data utworzenia zadania: {{ task.createDate|date('Y-m-d H:i:s') }}</p>
 <p>Termin realizacji:
 {% if task.dueDate != null %}
@@ -22,3 +28,16 @@
     <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
     <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
 {% endif %}
+{% for user in task.taskUsers %}
+    {% if user == app.user.username and task.taskStatus.name != "Zakończone" %}
+        <p>Dodaj komentarz</p>
+        {{ form_start(comment) }}
+        {{ form_widget(comment) }}
+        {{ form_end(comment) }}
+
+        <p>Dotychczasowe komentarze do zadania:</p>
+        {% for comment in comments %}
+            <p>Autor: {{ comment.logUser.username }}<br>Treść: {{ comment.description }}</p>
+        {% endfor %}
+    {% endif %}
+{% endfor %}

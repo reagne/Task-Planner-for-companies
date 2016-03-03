@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use TaskBundle\Entity\Comment;
 use TaskBundle\Entity\Task;
 use TaskBundle\Entity\User;
 
@@ -17,14 +18,23 @@ class TaskController extends Controller
         $form = $this->createFormBuilder($task);
         $form->add('title', 'text', ['label' => 'Tytuł: ']);
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
-//        $form->add('taskStatus', 'entity', ['label' => 'Wybierz status: ', 'class' => 'TaskBundle\Entity\Task_Status', 'choice_label' => 'name', 'expanded' => 'true', 'multiple' =>'false']);
-        $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => 'true', 'multiple' =>'true']);
+        $form->add('taskStatus', 'entity', ['label' => 'Wybierz status: ', 'class' => 'TaskBundle\Entity\Task_Status', 'choice_label' => 'name', 'expanded' => false, 'multiple' => false]);
+        $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => true, 'multiple' => true]);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('save', 'submit', ['label' => 'Zapisz']);
         $form->setAction($action);
         $taskForm = $form->getForm();
 
         return $taskForm;
+    }
+    private function commentForm($comment, $action){
+        $form = $this->createFormBuilder($comment);
+        $form->add('description', 'textarea', ['label' => 'Komentarz: ']);
+        $form->add('save', 'submit', ['label' => 'Zapisz']);
+        $form->setAction($action);
+        $commentForm = $form->getForm();
+
+        return $commentForm;
     }
 
     /**
@@ -39,6 +49,7 @@ class TaskController extends Controller
     }
     /**
      * @Route("/createTask", name="createTask")
+     * @Method("POST")
      */
     public function createTaskAction(Request $req){
 
@@ -51,14 +62,17 @@ class TaskController extends Controller
         $taskForm = $this->taskForm($task, $this->generateUrl('createTask'));
         $taskForm->handleRequest($req);
 
+        $status = $taskForm->get('taskStatus')->getData();
+
         if ($taskForm->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
+            $task->setTaskStatus($status);
+            $status->addTask($task);
             $em->persist($task);
             $em->flush();
         }
 
-        //return $this->redirectToRoute('main');
-        return new Response ("Utworzono");
+        return $this->redirectToRoute('main');
     }
 
     /**
@@ -78,11 +92,30 @@ class TaskController extends Controller
      * @Route("/task/{id}", name="showTask")
      * @Template("TaskBundle:Task:oneTask.html.twig")
      */
-    public function showTaskAction($id){
+    public function showTaskAction(Request $req, $id){
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
         $task = $repo->find($id);
 
-        return['task' => $task];
+        $comment = new Comment();
+        $commentForm = $this->commentForm($comment, $this->generateUrl('showTask', ['id' => $id]));
+        $commentForm->createView();
+
+        $comment->setTask($task);
+        $user = $this->getUser();
+        $comment->setLogUser($user);
+
+        $commentForm->handleRequest($req);
+
+        if ($commentForm->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        $repo2 = $this->getDoctrine()->getRepository('TaskBundle:Comment');
+        $comments = $repo2->findByTask($id);
+
+        return['task' => $task, 'comment' => $commentForm->createView(), 'comments' => $comments];
     }
     /**
      * @Route("/task/{id}/edit", name="taskToEdit")
