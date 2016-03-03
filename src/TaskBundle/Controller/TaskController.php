@@ -20,6 +20,7 @@ class TaskController extends Controller
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
         $form->add('taskStatus', 'entity', ['label' => 'Wybierz status: ', 'class' => 'TaskBundle\Entity\Task_Status', 'choice_label' => 'name', 'expanded' => false, 'multiple' => false]);
         $form->add('taskUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => true, 'multiple' => true]);
+        $form->add('project', 'entity', ['label' => 'Wybierz projekt: ', 'class' => 'TaskBundle\Entity\Project', 'choice_label' => 'title', 'expanded' => false, 'multiple' => false, 'required' => false]);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('save', 'submit', ['label' => 'Zapisz']);
         $form->setAction($action);

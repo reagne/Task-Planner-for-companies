@@ -10,11 +10,11 @@
 </p>
 <p>Data utworzenia zadania: {{ task.createDate|date('Y-m-d H:i:s') }}</p>
 <p>Termin realizacji:
-{% if task.dueDate != null %}
-    {{ task.dueDate|date('Y-m-d H:i:s') }}
-{% else %}
-    Brak
-{% endif %}
+    {% if task.dueDate != null %}
+        {{ task.dueDate|date('Y-m-d H:i:s') }}
+    {% else %}
+        Brak
+    {% endif %}
 </p>
 <p>Osoby przypisane do zadania:
 <ul>
@@ -23,7 +23,9 @@
     {% endfor %}
 </ul>
 </p>
-<p>Projekt: {{ task.project }}</p>
+{% if task.project != null %}
+    <p>Projekt: {{ task.project.title }}</p>
+{% endif %}
 {% if task.taskOwner == app.user.username %}
     <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
     <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
