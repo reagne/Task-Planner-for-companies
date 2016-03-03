@@ -36,6 +36,8 @@ class TaskController extends Controller
         $form->add('project', 'entity', [
             'label' => 'Wybierz projekt: ',
             'class' => 'TaskBundle\Entity\Project',
+            'query_builder' => function(EntityRepository $er){
+                return $er->createQueryBuilder('p')->where('p.id != 1');},
             'choice_label' => 'title',
             'expanded' => false,
             'multiple' => false,
@@ -126,7 +128,7 @@ class TaskController extends Controller
      * @Template("TaskBundle:Task:oneTask.html.twig")
      */
     public function showTaskAction(Request $req, $id, $status){
-        // Pobranie zadanie
+        // Pobranie zadania (obiektu)
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
         $task = $repo->find($id);
 
@@ -156,6 +158,8 @@ class TaskController extends Controller
             $taskStatus = $repo3->find($status);
 
             $task->setTaskStatus($taskStatus);
+            $end_date = date("Y-m-d H:i:s");
+            $task->setEndDate(new \DateTime($end_date));
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();

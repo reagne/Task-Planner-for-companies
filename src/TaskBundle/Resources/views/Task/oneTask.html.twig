@@ -17,6 +17,9 @@
         Brak
     {% endif %}
 </p>
+{% if task.endDate != null %}
+    <p>Data zakończenia: {{ task.endDate|date('Y-m-d H:i:s') }} </p>
+{% endif %}
 <p>Osoby przypisane do zadania:
 <ul>
     {% for user in task.taskUsers%}
@@ -25,16 +28,18 @@
 </ul>
 </p>
 {% if task.project != null %}
-    <p>Projekt: {{ task.project.title }}</p>
+    <p>Projekt: <a href="{{ path('showProject', {'id':task.project.id}) }}">{{ task.project.title }}</a></p>
 {% endif %}
 {# Wyświetalnie przycisków akcji dla autora zadania #}
 {% if task.taskOwner == app.user.username %}
-    <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+    {% if task.taskStatus.id != 1 %}
+        <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+    {% endif %}
     <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
 {% endif %}
 {# Opcja komentarzy dla użytkowników, którym przyznano zadanie, jeśli zadanie nie jest zakończone #}
 {% for user in task.taskUsers %}
-    {% if user == app.user.username and task.taskStatus.name != "Zakończone" %}
+    {% if user == app.user.username and task.taskStatus.id != 1 %}
         <p>Dodaj komentarz</p>
         {{ form_start(comment) }}
         {{ form_widget(comment) }}

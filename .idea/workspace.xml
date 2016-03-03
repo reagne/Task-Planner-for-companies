@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6997278-bbd7-48d1-9ddb-4b06a218db40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allTask.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allTask.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" />
     </list>
     <ignored path="TaskPlanner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,41 +41,80 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29383117">
-              <caret line="103" column="33" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
+            <state vertical-scroll-proportion="-18.125">
+              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
               <folding>
                 <element signature="e#41#75#0#PHP" expanded="true" />
-                <element signature="e#545#1985#0#PHP" expanded="false" />
-                <element signature="e#1990#2338#0#PHP" expanded="false" />
-                <element signature="e#2578#2590#1#PHP" expanded="true" />
-                <element signature="e#3058#3070#1#PHP" expanded="true" />
-                <element signature="e#3457#3463#1#PHP" expanded="true" />
-                <element signature="e#3713#3730#1#PHP" expanded="true" />
-                <element signature="e#4137#4154#1#PHP" expanded="true" />
-                <element signature="e#4587#4604#1#PHP" expanded="true" />
-                <element signature="e#4775#4785#0#PHP" expanded="true" />
-                <element signature="e#5214#5234#1#PHP" expanded="true" />
-                <element signature="e#5398#5422#1#PHP" expanded="true" />
-                <element signature="e#5990#6007#1#PHP" expanded="true" />
-                <element signature="e#6106#6116#0#PHP" expanded="true" />
-                <element signature="e#6394#6411#1#PHP" expanded="true" />
-                <element signature="e#6511#6521#0#PHP" expanded="true" />
-                <element signature="e#6749#6759#0#PHP" expanded="true" />
-                <element signature="e#6955#6972#1#PHP" expanded="true" />
-                <element signature="e#7149#7155#1#PHP" expanded="true" />
+                <element signature="e#2128#2476#0#PHP" expanded="false" />
+                <element signature="e#2716#2728#1#PHP" expanded="true" />
+                <element signature="e#3196#3208#1#PHP" expanded="true" />
+                <element signature="e#3595#3601#1#PHP" expanded="true" />
+                <element signature="e#3851#3868#1#PHP" expanded="true" />
+                <element signature="e#4275#4292#1#PHP" expanded="true" />
+                <element signature="e#4735#4752#1#PHP" expanded="true" />
+                <element signature="e#4923#4933#0#PHP" expanded="true" />
+                <element signature="e#5362#5382#1#PHP" expanded="true" />
+                <element signature="e#5546#5570#1#PHP" expanded="true" />
+                <element signature="e#6240#6257#1#PHP" expanded="true" />
+                <element signature="e#6356#6366#0#PHP" expanded="true" />
+                <element signature="e#6644#6661#1#PHP" expanded="true" />
+                <element signature="e#6761#6771#0#PHP" expanded="true" />
+                <element signature="e#6999#7009#0#PHP" expanded="true" />
+                <element signature="e#7205#7222#1#PHP" expanded="true" />
+                <element signature="e#7399#7405#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oneProject.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.75">
+              <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+              <folding>
+                <element signature="e#41#75#0#PHP" expanded="true" />
+                <element signature="e#1916#1931#1#PHP" expanded="true" />
+                <element signature="e#2415#2430#1#PHP" expanded="true" />
+                <element signature="e#2838#2848#1#PHP" expanded="true" />
+                <element signature="e#3114#3134#1#PHP" expanded="true" />
+                <element signature="e#3516#3536#1#PHP" expanded="true" />
+                <element signature="e#3630#3647#1#PHP" expanded="true" />
+                <element signature="e#3812#3839#1#PHP" expanded="true" />
+                <element signature="e#4501#4521#1#PHP" expanded="true" />
+                <element signature="e#4632#4645#0#PHP" expanded="true" />
+                <element signature="e#4938#4958#1#PHP" expanded="true" />
+                <element signature="e#5070#5083#0#PHP" expanded="true" />
+                <element signature="e#5317#5330#0#PHP" expanded="true" />
+                <element signature="e#5535#5555#1#PHP" expanded="true" />
+                <element signature="e#5738#5748#1#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oneTask.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.625">
+              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+              <folding>
+                <element signature="e#822#833#0#Twig" expanded="true" />
+                <element signature="e#1212#1222#0#Twig" expanded="true" />
+                <element signature="e#1662#1670#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oneProject.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0">
-              <caret line="24" column="50" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.46266234">
+              <caret line="19" column="11" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -102,32 +141,6 @@
                 <marker date="1457019926089" expanded="true" signature="764:890" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="764:928" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="1076:1201" placeholder="SELECT t FRO... TaskBundle" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875">
-              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-              <folding>
-                <element signature="e#41#75#0#PHP" expanded="true" />
-                <element signature="e#1916#1931#1#PHP" expanded="true" />
-                <element signature="e#2415#2430#1#PHP" expanded="true" />
-                <element signature="e#2838#2848#1#PHP" expanded="true" />
-                <element signature="e#3114#3134#1#PHP" expanded="true" />
-                <element signature="e#3516#3536#1#PHP" expanded="true" />
-                <element signature="e#3630#3647#1#PHP" expanded="true" />
-                <element signature="e#3812#3839#1#PHP" expanded="true" />
-                <element signature="e#4396#4416#1#PHP" expanded="true" />
-                <element signature="e#4527#4540#0#PHP" expanded="true" />
-                <element signature="e#4833#4853#1#PHP" expanded="true" />
-                <element signature="e#4965#4978#0#PHP" expanded="true" />
-                <element signature="e#5212#5225#0#PHP" expanded="true" />
-                <element signature="e#5430#5450#1#PHP" expanded="true" />
-                <element signature="e#5633#5643#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,15 +231,15 @@
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/CommentController.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/StatusController.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/LogUserControllerController.php" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/StatusControllerController.php" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allTask.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allArchieveTask.html.twig" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
       </list>
     </option>
   </component>
@@ -682,24 +695,23 @@
           <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
             <element signature="e#41#75#0#PHP" expanded="true" />
-            <element signature="e#545#1985#0#PHP" expanded="false" />
-            <element signature="e#1990#2338#0#PHP" expanded="false" />
-            <element signature="e#2578#2590#1#PHP" expanded="true" />
-            <element signature="e#3058#3070#1#PHP" expanded="true" />
-            <element signature="e#3457#3463#1#PHP" expanded="true" />
-            <element signature="e#3713#3730#1#PHP" expanded="true" />
-            <element signature="e#4137#4154#1#PHP" expanded="true" />
-            <element signature="e#4587#4604#1#PHP" expanded="true" />
-            <element signature="e#4775#4785#0#PHP" expanded="true" />
-            <element signature="e#5214#5234#1#PHP" expanded="true" />
-            <element signature="e#5398#5422#1#PHP" expanded="true" />
-            <element signature="e#5990#6007#1#PHP" expanded="true" />
-            <element signature="e#6106#6116#0#PHP" expanded="true" />
-            <element signature="e#6394#6411#1#PHP" expanded="true" />
-            <element signature="e#6511#6521#0#PHP" expanded="true" />
-            <element signature="e#6749#6759#0#PHP" expanded="true" />
-            <element signature="e#6955#6972#1#PHP" expanded="true" />
-            <element signature="e#7149#7155#1#PHP" expanded="true" />
+            <element signature="e#2128#2476#0#PHP" expanded="false" />
+            <element signature="e#2716#2728#1#PHP" expanded="true" />
+            <element signature="e#3196#3208#1#PHP" expanded="true" />
+            <element signature="e#3595#3601#1#PHP" expanded="true" />
+            <element signature="e#3851#3868#1#PHP" expanded="true" />
+            <element signature="e#4275#4292#1#PHP" expanded="true" />
+            <element signature="e#4735#4752#1#PHP" expanded="true" />
+            <element signature="e#4923#4933#0#PHP" expanded="true" />
+            <element signature="e#5362#5382#1#PHP" expanded="true" />
+            <element signature="e#5546#5570#1#PHP" expanded="true" />
+            <element signature="e#6240#6257#1#PHP" expanded="true" />
+            <element signature="e#6356#6366#0#PHP" expanded="true" />
+            <element signature="e#6644#6661#1#PHP" expanded="true" />
+            <element signature="e#6761#6771#0#PHP" expanded="true" />
+            <element signature="e#6999#7009#0#PHP" expanded="true" />
+            <element signature="e#7205#7222#1#PHP" expanded="true" />
+            <element signature="e#7399#7405#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -968,41 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73214287">
-          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
-          <folding>
-            <element signature="e#980#990#0#Twig" expanded="true" />
-            <element signature="e#1443#1451#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="e#41#75#0#PHP" expanded="true" />
-            <element signature="e#1916#1931#1#PHP" expanded="true" />
-            <element signature="e#2415#2430#1#PHP" expanded="true" />
-            <element signature="e#2838#2848#1#PHP" expanded="true" />
-            <element signature="e#3114#3134#1#PHP" expanded="true" />
-            <element signature="e#3516#3536#1#PHP" expanded="true" />
-            <element signature="e#3630#3647#1#PHP" expanded="true" />
-            <element signature="e#3812#3839#1#PHP" expanded="true" />
-            <element signature="e#4396#4416#1#PHP" expanded="true" />
-            <element signature="e#4527#4540#0#PHP" expanded="true" />
-            <element signature="e#4833#4853#1#PHP" expanded="true" />
-            <element signature="e#4965#4978#0#PHP" expanded="true" />
-            <element signature="e#5212#5225#0#PHP" expanded="true" />
-            <element signature="e#5430#5450#1#PHP" expanded="true" />
-            <element signature="e#5633#5643#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.166667">
@@ -1073,39 +1050,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="50" />
-          <folding />
+        <state vertical-scroll-proportion="-20.625">
+          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="e#822#833#0#Twig" expanded="true" />
+            <element signature="e#1212#1222#0#Twig" expanded="true" />
+            <element signature="e#1662#1670#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.75">
+          <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <element signature="e#1916#1931#1#PHP" expanded="true" />
+            <element signature="e#2415#2430#1#PHP" expanded="true" />
+            <element signature="e#2838#2848#1#PHP" expanded="true" />
+            <element signature="e#3114#3134#1#PHP" expanded="true" />
+            <element signature="e#3516#3536#1#PHP" expanded="true" />
+            <element signature="e#3630#3647#1#PHP" expanded="true" />
+            <element signature="e#3812#3839#1#PHP" expanded="true" />
+            <element signature="e#4501#4521#1#PHP" expanded="true" />
+            <element signature="e#4632#4645#0#PHP" expanded="true" />
+            <element signature="e#4938#4958#1#PHP" expanded="true" />
+            <element signature="e#5070#5083#0#PHP" expanded="true" />
+            <element signature="e#5317#5330#0#PHP" expanded="true" />
+            <element signature="e#5535#5555#1#PHP" expanded="true" />
+            <element signature="e#5738#5748#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29383117">
-          <caret line="103" column="33" selection-start-line="103" selection-start-column="33" selection-end-line="103" selection-end-column="33" />
+        <state vertical-scroll-proportion="-18.125">
+          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
           <folding>
             <element signature="e#41#75#0#PHP" expanded="true" />
-            <element signature="e#545#1985#0#PHP" expanded="false" />
-            <element signature="e#1990#2338#0#PHP" expanded="false" />
-            <element signature="e#2578#2590#1#PHP" expanded="true" />
-            <element signature="e#3058#3070#1#PHP" expanded="true" />
-            <element signature="e#3457#3463#1#PHP" expanded="true" />
-            <element signature="e#3713#3730#1#PHP" expanded="true" />
-            <element signature="e#4137#4154#1#PHP" expanded="true" />
-            <element signature="e#4587#4604#1#PHP" expanded="true" />
-            <element signature="e#4775#4785#0#PHP" expanded="true" />
-            <element signature="e#5214#5234#1#PHP" expanded="true" />
-            <element signature="e#5398#5422#1#PHP" expanded="true" />
-            <element signature="e#5990#6007#1#PHP" expanded="true" />
-            <element signature="e#6106#6116#0#PHP" expanded="true" />
-            <element signature="e#6394#6411#1#PHP" expanded="true" />
-            <element signature="e#6511#6521#0#PHP" expanded="true" />
-            <element signature="e#6749#6759#0#PHP" expanded="true" />
-            <element signature="e#6955#6972#1#PHP" expanded="true" />
-            <element signature="e#7149#7155#1#PHP" expanded="true" />
+            <element signature="e#2128#2476#0#PHP" expanded="false" />
+            <element signature="e#2716#2728#1#PHP" expanded="true" />
+            <element signature="e#3196#3208#1#PHP" expanded="true" />
+            <element signature="e#3595#3601#1#PHP" expanded="true" />
+            <element signature="e#3851#3868#1#PHP" expanded="true" />
+            <element signature="e#4275#4292#1#PHP" expanded="true" />
+            <element signature="e#4735#4752#1#PHP" expanded="true" />
+            <element signature="e#4923#4933#0#PHP" expanded="true" />
+            <element signature="e#5362#5382#1#PHP" expanded="true" />
+            <element signature="e#5546#5570#1#PHP" expanded="true" />
+            <element signature="e#6240#6257#1#PHP" expanded="true" />
+            <element signature="e#6356#6366#0#PHP" expanded="true" />
+            <element signature="e#6644#6661#1#PHP" expanded="true" />
+            <element signature="e#6761#6771#0#PHP" expanded="true" />
+            <element signature="e#6999#7009#0#PHP" expanded="true" />
+            <element signature="e#7205#7222#1#PHP" expanded="true" />
+            <element signature="e#7399#7405#1#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46266234">
+          <caret line="19" column="11" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

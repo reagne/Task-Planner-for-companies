@@ -102,6 +102,8 @@ class ProjectController extends Controller
             $projectStatus = $repo3->find($status);
 
             $project->setProjectStatus($projectStatus);
+            $end_date = date("Y-m-d H:i:s");
+            $project->setEndDate(new \DateTime($end_date));
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();

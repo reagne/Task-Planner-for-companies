@@ -15,6 +15,9 @@
         Brak
     {% endif %}
 </p>
+{% if project.endDate != null %}
+    <p>Data zakończenia: {{ project.endDate|date('Y-m-d H:i:s') }} </p>
+{% endif %}
 <p>Osoby przypisane do projektu:
     <ul>
         {% for user in project.projectUsers%}
