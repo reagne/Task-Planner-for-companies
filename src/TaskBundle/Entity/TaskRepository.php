@@ -12,32 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class TaskRepository extends EntityRepository
 {
-    public function findAllTasksByDueDate($user){
+    public function findAllTasksWithActiveStatus($user){
         $em = $this->getEntityManager();
         $query = $em->createQuery('
-            SELECT t FROM TaskBundle:Task t
-            JOIN t.taskUsers u
-            WHERE u = :user OR t.taskOwner = :user
+            SELECT t, u, s FROM TaskBundle:Task t
+            JOIN t.taskUsers u JOIN t.taskStatus s
+            WHERE u = :user AND s != 1
             ORDER BY t.dueDate ASC')
             ->setParameter('user', $user);
         return $query->getResult();
     }
-    public function findAllTasksWithActiveStatus(){
-        $em = $this->getEntityManager();
-        $query = $em->createQuery('
-            SELECT t FROM TaskBundle:Task t
-            JOIN t.taskStatus s
-            WHERE s.id != 1
-            ORDER BY t.dueDate ASC');
-        return $query->getResult();
-    }
-    public function findAllTasksNotActiveStatus(){
-        $em = $this->getEntityManager();
-        $query = $em->createQuery('
-            SELECT t FROM TaskBundle:Task t
-            JOIN t.taskStatus s
-            WHERE s.id = 1
-            ORDER BY t.dueDate ASC');
-        return $query->getResult();
-    }
+
+    public function findAllTasksNotActiveStatus($user){
+            $em = $this->getEntityManager();
+            $query = $em->createQuery('
+            SELECT t, u, s FROM TaskBundle:Task t
+            JOIN t.taskUsers u JOIN t.taskStatus s
+            WHERE u = :user AND s = 1
+            ORDER BY t.dueDate ASC')
+            ->setParameter('user', $user);
+            return $query->getResult();
+   }
 }

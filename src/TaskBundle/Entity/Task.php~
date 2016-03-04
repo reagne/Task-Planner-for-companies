@@ -38,23 +38,23 @@ class Task
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="create_date", type="datetime")
+     * @ORM\Column(name="create_date", type="datetime", nullable=true)
      */
     private $createDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="due_date", type="datetime")
+     * @ORM\Column(name="due_date", type="datetime", nullable=true)
      */
-    private $dueDate = null;
+    private $dueDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end_date", type="datetime")
+     * @ORM\Column(name="end_date", type="datetime", nullable=true)
      */
-    private $endDate = null;
+    private $endDate;
 
     /**
      *
@@ -63,7 +63,7 @@ class Task
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="tasks")
+     * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="ownerTask")
      * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     private $taskStatus;
@@ -76,15 +76,14 @@ class Task
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="tasks")
-     * @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="ownerTask_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $taskOwner;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", inversedBy= "coTasks")
-     * @ORM\JoinTable(name="task_user")
+     * @ORM\OneToMany(targetEntity="UsersTask", mappedBy= "mainTask")
      */
-    private $taskUsers;
+    private $coTask;
 
 
     /**
@@ -259,8 +258,13 @@ class Task
      * @param \TaskBundle\Entity\Task_Status $taskStatus
      * @return Task
      */
-    public function setTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus = null)
+    public function setTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
     {
+        if(!is_array($taskStatus))
+        {
+            $taskStatus = array($taskStatus);
+        }
+
         $this->taskStatus = $taskStatus;
 
         return $this;
@@ -353,5 +357,62 @@ class Task
     public function getTaskUsers()
     {
         return $this->taskUsers;
+    }
+
+    /**
+     * Add taskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $taskStatus
+     * @return Task
+     */
+    public function addTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
+    {
+        $this->taskStatus[] = $taskStatus;
+
+        return $this;
+    }
+
+    /**
+     * Remove taskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $taskStatus
+     */
+    public function removeTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
+    {
+        $this->taskStatus->removeElement($taskStatus);
+    }
+
+
+    /**
+     * Add ownerTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $ownerTask
+     * @return Task
+     */
+    public function addOwnerTask(\TaskBundle\Entity\UsersTask $ownerTask)
+    {
+        $this->ownerTask[] = $ownerTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove ownerTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $ownerTask
+     */
+    public function removeOwnerTask(\TaskBundle\Entity\UsersTask $ownerTask)
+    {
+        $this->ownerTask->removeElement($ownerTask);
+    }
+
+    /**
+     * Get ownerTask
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOwnerTask()
+    {
+        return $this->ownerTask;
     }
 }

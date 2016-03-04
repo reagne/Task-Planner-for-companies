@@ -34,7 +34,7 @@ class User extends BaseUser
     protected $projects;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Task", mappedBy="taskUsers")
+     * @ORM\ManyToMany(targetEntity="UsersTask", mappedBy="taskUsers")
      */
     protected $coTasks;
 

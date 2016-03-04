@@ -3,6 +3,7 @@
 namespace TaskBundle\Controller;
 
 use Doctrine\ORM\EntityRepository;
+use Proxies\__CG__\TaskBundle\Entity\Task_Status;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use TaskBundle\Entity\Comment;
 use TaskBundle\Entity\Task;
 use TaskBundle\Entity\User;
+use TaskBundle\Entity\UsersTask;
 
 class TaskController extends Controller
 {
@@ -65,7 +67,7 @@ class TaskController extends Controller
      */
     public function newTaskAction(){
         $task = new Task();
-        $taskForm = $this->taskForm($task,$this->generateUrl('createTask'));
+        $taskForm = $this->taskForm($task, $this->generateUrl('createTask'));
 
         return['task' => $taskForm->createView()];
     }
@@ -74,7 +76,6 @@ class TaskController extends Controller
      * @Method("POST")
      */
     public function createTaskAction(Request $req){
-
         $task = new Task();
         $owner = $this->getUser();
         $task->setTaskOwner($owner);
@@ -84,13 +85,19 @@ class TaskController extends Controller
         $taskForm = $this->taskForm($task, $this->generateUrl('createTask'));
         $taskForm->handleRequest($req);
 
-        $status = $taskForm->get('taskStatus')->getData();
+        $taskUsers = $req->request->get('taskUsers');
+        $taskStatus = $taskForm->get('taskStatus')->getData();
+        $coTask = new UsersTask();
+        $coTask->addTaskUser($taskUsers);
+        $coTask->setCoTaskStatus($taskStatus);
+        $coTask->setMainTask($task->setTaskOwner($owner));
 
         if ($taskForm->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
-            $task->setTaskStatus($status);
-            $status->addTask($task);
             $em->persist($task);
+            $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($coTask);
             $em->flush();
         }
 
@@ -106,7 +113,8 @@ class TaskController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
 
-        $tasks = $repo->findAllTasksWithActiveStatus($repo->findAllTasksByDueDate($user));
+        $tasks = $repo->findAll();
+        //$tasks = $repo->findAllTasksWithActiveStatus($user);
 
         return ['tasks' => $tasks];
     }
@@ -119,18 +127,19 @@ class TaskController extends Controller
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
 
-        $tasks = $repo->findAllTasksNotActiveStatus($repo->findAllTasksByDueDate($user));
+        $tasks = $repo->findAllTasksNotActiveStatus($user);
 
         return ['tasks' => $tasks];
     }
     /**
-     * @Route("/task/{id}/{status}", name="showTask", defaults={"status" = null})
+     * @Route("/task/{id}/show/{status}", name="showTask", defaults={"status" = null})
      * @Template("TaskBundle:Task:oneTask.html.twig")
      */
     public function showTaskAction(Request $req, $id, $status){
-        // Pobranie zadania (obiektu)
+        // Pobranie zadania (obiektu) i zalogowanego użytkownika
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Task');
         $task = $repo->find($id);
+        $user = $this->getUser();
 
         // Opcja komentarzy
         $comment = new Comment();
@@ -138,7 +147,6 @@ class TaskController extends Controller
         $commentForm->createView();
 
         $comment->setTask($task);
-        $user = $this->getUser();
         $comment->setLogUser($user);
 
         $commentForm->handleRequest($req);
@@ -153,7 +161,7 @@ class TaskController extends Controller
         $comments = $repo2->findByTask($id);
 
         // Wykonanie zadanie
-        if($status != null){
+        if($status != null) {
             $repo3 = $this->getDoctrine()->getRepository('TaskBundle:Task_Status');
             $taskStatus = $repo3->find($status);
 
@@ -164,7 +172,6 @@ class TaskController extends Controller
             $em->persist($task);
             $em->flush();
         }
-
         return['task' => $task, 'comment' => $commentForm->createView(), 'comments' => $comments];
     }
     /**

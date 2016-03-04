@@ -1,0 +1,138 @@
+<?php
+
+namespace TaskBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UsersTask
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="TaskBundle\Entity\UsersTaskRepository")
+ */
+class UsersTask
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy= "coTasks")
+     * @ORM\JoinTable(name="task_user")
+     */
+    private $taskUsers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="coTask")
+     * @ORM\JoinColumn(name="coTaskStatus_id", referencedColumnName="id")
+     */
+    private $coTaskStatus;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Task", inversedBy="coTask")
+     * @ORM\JoinColumn(name="ownerTask_id", referencedColumnName="id")
+     */
+    private $mainTask;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->taskUsers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add taskUsers
+     *
+     * @param \TaskBundle\Entity\User $taskUsers
+     * @return UsersTask
+     */
+    public function addTaskUser(\TaskBundle\Entity\User $taskUsers)
+    {
+        $this->taskUsers[] = $taskUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove taskUsers
+     *
+     * @param \TaskBundle\Entity\User $taskUsers
+     */
+    public function removeTaskUser(\TaskBundle\Entity\User $taskUsers)
+    {
+        $this->taskUsers->removeElement($taskUsers);
+    }
+
+    /**
+     * Get taskUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTaskUsers()
+    {
+        return $this->taskUsers;
+    }
+
+    /**
+     * Set coTaskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $coTaskStatus
+     * @return UsersTask
+     */
+    public function setCoTaskStatus(\TaskBundle\Entity\Task_Status $coTaskStatus = null)
+    {
+        $this->coTaskStatus = $coTaskStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get coTaskStatus
+     *
+     * @return \TaskBundle\Entity\Task_Status 
+     */
+    public function getCoTaskStatus()
+    {
+        return $this->coTaskStatus;
+    }
+
+    /**
+     * Set coTask
+     *
+     * @param \TaskBundle\Entity\Task $coTask
+     * @return UsersTask
+     */
+    public function setCoTask(\TaskBundle\Entity\Task $coTask = null)
+    {
+        $this->coTask = $coTask;
+
+        return $this;
+    }
+
+    /**
+     * Get coTask
+     *
+     * @return \TaskBundle\Entity\Task 
+     */
+    public function getCoTask()
+    {
+        return $this->coTask;
+    }
+}

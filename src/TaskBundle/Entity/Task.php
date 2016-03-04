@@ -63,8 +63,8 @@ class Task
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="tasks")
-     * @ORM\JoinColumn(name="status_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Task_Status", inversedBy="ownerTask")
+     * @ORM\JoinColumn(name="status_id", referencedColumnName="id")
      */
     private $taskStatus;
 
@@ -76,15 +76,14 @@ class Task
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="tasks")
-     * @ORM\JoinColumn(name="owner_user_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="ownerTask_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $taskOwner;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", inversedBy= "coTasks")
-     * @ORM\JoinTable(name="task_user")
+     * @ORM\OneToMany(targetEntity="UsersTask", mappedBy= "mainTask")
      */
-    private $taskUsers;
+    private $coTask;
 
 
     /**
@@ -259,7 +258,7 @@ class Task
      * @param \TaskBundle\Entity\Task_Status $taskStatus
      * @return Task
      */
-    public function setTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus = null)
+    public function setTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
     {
         $this->taskStatus = $taskStatus;
 
@@ -353,5 +352,95 @@ class Task
     public function getTaskUsers()
     {
         return $this->taskUsers;
+    }
+
+    /**
+     * Add taskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $taskStatus
+     * @return Task
+     */
+    public function addTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
+    {
+        $this->taskStatus[] = $taskStatus;
+
+        return $this;
+    }
+
+    /**
+     * Remove taskStatus
+     *
+     * @param \TaskBundle\Entity\Task_Status $taskStatus
+     */
+    public function removeTaskStatus(\TaskBundle\Entity\Task_Status $taskStatus)
+    {
+        $this->taskStatus->removeElement($taskStatus);
+    }
+
+
+    /**
+     * Add ownerTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $ownerTask
+     * @return Task
+     */
+    public function addOwnerTask(\TaskBundle\Entity\UsersTask $ownerTask)
+    {
+        $this->ownerTask[] = $ownerTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove ownerTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $ownerTask
+     */
+    public function removeOwnerTask(\TaskBundle\Entity\UsersTask $ownerTask)
+    {
+        $this->ownerTask->removeElement($ownerTask);
+    }
+
+    /**
+     * Get ownerTask
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOwnerTask()
+    {
+        return $this->ownerTask;
+    }
+
+    /**
+     * Add coTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $coTask
+     * @return Task
+     */
+    public function addCoTask(\TaskBundle\Entity\UsersTask $coTask)
+    {
+        $this->coTask[] = $coTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove coTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $coTask
+     */
+    public function removeCoTask(\TaskBundle\Entity\UsersTask $coTask)
+    {
+        $this->coTask->removeElement($coTask);
+    }
+
+    /**
+     * Get coTask
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoTask()
+    {
+        return $this->coTask;
     }
 }

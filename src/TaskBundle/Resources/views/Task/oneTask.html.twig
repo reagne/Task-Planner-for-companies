@@ -3,11 +3,11 @@
 <p>Treść: {{ task.description }}</p>
 <p>Autor: {{ task.taskOwner }}</p>
 <p>Status:
-    {% if task.taskStatus != null %}
-        {{ task.taskStatus.name }}
-    {% else %}
-        Brak statusu
-    {% endif %}
+    {% for status in task.taskStatus %}
+            {{ status.name }}
+        {% else %}
+            Brak statusu
+    {% endfor %}
 </p>
 <p>Data utworzenia zadania: {{ task.createDate|date('Y-m-d H:i:s') }}</p>
 <p>Termin realizacji:
@@ -23,7 +23,9 @@
 <p>Osoby przypisane do zadania:
 <ul>
     {% for user in task.taskUsers%}
-        <li>{{ user.username }}</li>
+        {% for status in task.taskStatus %}
+            <li>{{ user.username }} | Wykonane: {% if status.id != 1 %} Nie {% else %} Tak {% endif %}</li>
+        {% endfor %}
     {% endfor %}
 </ul>
 </p>
@@ -31,20 +33,39 @@
     <p>Projekt: <a href="{{ path('showProject', {'id':task.project.id}) }}">{{ task.project.title }}</a></p>
 {% endif %}
 {# Wyświetalnie przycisków akcji dla autora zadania #}
-{% if task.taskOwner == app.user.username %}
-    {% if task.taskStatus.id != 1 %}
-        <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
-    {% endif %}
-    <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
-{% endif %}
+{% for status in task.taskStatus %}
+    {% if app.user is defined %}
+        {% if task.taskOwner == app.user %}
+            {% if status.id != 1 %}
+                <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+            {% endif %}
+            <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
+        {% endif %}
 {# Opcja komentarzy dla użytkowników, którym przyznano zadanie, jeśli zadanie nie jest zakończone #}
-{% for user in task.taskUsers %}
-    {% if user == app.user.username and task.taskStatus.id != 1 %}
-        <p>Dodaj komentarz</p>
-        {{ form_start(comment) }}
-        {{ form_widget(comment) }}
-        {{ form_end(comment) }}
-        <button onclick="location.href='{{ path('showTask', {'id':task.id, 'status':1}) }}'">Wykonaj zadanie</button>
+        {% for user in task.taskUsers %}
+            {% if user == app.user and (status.id != 1) %}
+                <p>Dodaj komentarz</p>
+                {{ form_start(comment) }}
+                {{ form_widget(comment) }}
+                {{ form_end(comment) }}
+                <button onclick="location.href='{{ path('showTask', {'id':task.id, 'status':1}) }}'">Wykonaj zadanie</button>
+            {% endif %}
+        {% endfor %}
+        {% else %}
+            {% if task.taskOwner == app.user %}
+                <button onclick="location.href='{{ path('editTask', {'id':task.id}) }}'">Edytuj zadanie</button>
+                <button onclick="location.href='{{ path('removeTask', {'id':task.id}) }}'">Usuń zadanie</button>
+                {# Opcja komentarzy dla użytkowników, którym przyznano zadanie, jeśli zadanie nie jest zakończone #}
+            {% endif %}
+            {% for user in task.taskUsers %}
+                {% if user == app.user %}
+                    <p>Dodaj komentarz</p>
+                    {{ form_start(comment) }}
+                    {{ form_widget(comment) }}
+                    {{ form_end(comment) }}
+                    <button onclick="location.href='{{ path('showTask', {'id':task.id, 'status':1}) }}'">Wykonaj zadanie</button>
+                {% endif %}
+            {% endfor %}
     {% endif %}
 {% endfor %}
 <p>Dotychczasowe komentarze do zadania:</p>

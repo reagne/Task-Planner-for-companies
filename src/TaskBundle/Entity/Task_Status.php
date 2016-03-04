@@ -31,7 +31,12 @@ class Task_Status
     /**
      * @ORM\OneToMany(targetEntity="Task", mappedBy="taskStatus")
      */
-    private $tasks;
+    private $ownerTask;
+
+    /**
+     * @ORM\OneToMany(targetEntity="UsersTask", mappedBy="coTaskStatus")
+     */
+    private $coTask;
 
 
     /**
@@ -66,13 +71,6 @@ class Task_Status
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add tasks
@@ -105,5 +103,80 @@ class Task_Status
     public function getTasks()
     {
         return $this->tasks;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tasks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Add ownerTask
+     *
+     * @param \TaskBundle\Entity\Task $ownerTask
+     * @return Task_Status
+     */
+    public function addOwnerTask(\TaskBundle\Entity\Task $ownerTask)
+    {
+        $this->ownerTask[] = $ownerTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove ownerTask
+     *
+     * @param \TaskBundle\Entity\Task $ownerTask
+     */
+    public function removeOwnerTask(\TaskBundle\Entity\Task $ownerTask)
+    {
+        $this->ownerTask->removeElement($ownerTask);
+    }
+
+    /**
+     * Get ownerTask
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOwnerTask()
+    {
+        return $this->ownerTask;
+    }
+
+    /**
+     * Add coTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $coTask
+     * @return Task_Status
+     */
+    public function addCoTask(\TaskBundle\Entity\UsersTask $coTask)
+    {
+        $this->coTask[] = $coTask;
+
+        return $this;
+    }
+
+    /**
+     * Remove coTask
+     *
+     * @param \TaskBundle\Entity\UsersTask $coTask
+     */
+    public function removeCoTask(\TaskBundle\Entity\UsersTask $coTask)
+    {
+        $this->coTask->removeElement($coTask);
+    }
+
+    /**
+     * Get coTask
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCoTask()
+    {
+        return $this->coTask;
     }
 }

@@ -18,7 +18,12 @@ class ProjectController extends Controller
         $form = $this->createFormBuilder($project);
         $form->add('title', 'text', ['label' => 'Tytuł: ']);
         $form->add('description', 'textarea', ['label' => 'Treść: ']);
-        $form->add('projectUsers', 'entity', ['label' => 'Wybierz użytkownika: ', 'class' => 'TaskBundle\Entity\User', 'choice_label' => 'username', 'expanded' => 'true', 'multiple' =>'true']);
+        $form->add('projectUsers', 'entity', [
+            'label' => 'Wybierz użytkownika: ',
+            'class' => 'TaskBundle\Entity\User',
+            'choice_label' => 'username',
+            'expanded' => 'true',
+            'multiple' =>'true']);
         $form->add('due_date', 'datetime', ['label' => 'Podaj termin realizacji: ', 'required' => false]);
         $form->add('projectStatus', 'entity', [
             'label' => 'Wybierz status: ',
