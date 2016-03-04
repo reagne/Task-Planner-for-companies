@@ -4,8 +4,8 @@
     <list default="true" id="a6997278-bbd7-48d1-9ddb-4b06a218db40" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php" afterPath="$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig" afterPath="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig" />
     </list>
     <ignored path="TaskPlanner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,21 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/Task.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.166667">
-              <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.125">
-              <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+            <state vertical-scroll-proportion="-6.2916665">
+              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
               <folding>
                 <element signature="e#41#75#0#PHP" expanded="true" />
                 <element signature="e#2128#2476#0#PHP" expanded="false" />
@@ -70,61 +60,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProjectController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.75">
-              <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.65746754">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="e#41#75#0#PHP" expanded="true" />
                 <element signature="e#1916#1931#1#PHP" expanded="true" />
                 <element signature="e#2415#2430#1#PHP" expanded="true" />
                 <element signature="e#2838#2848#1#PHP" expanded="true" />
-                <element signature="e#3114#3134#1#PHP" expanded="true" />
-                <element signature="e#3516#3536#1#PHP" expanded="true" />
-                <element signature="e#3630#3647#1#PHP" expanded="true" />
-                <element signature="e#3812#3839#1#PHP" expanded="true" />
-                <element signature="e#4501#4521#1#PHP" expanded="true" />
-                <element signature="e#4632#4645#0#PHP" expanded="true" />
-                <element signature="e#4938#4958#1#PHP" expanded="true" />
-                <element signature="e#5070#5083#0#PHP" expanded="true" />
-                <element signature="e#5317#5330#0#PHP" expanded="true" />
-                <element signature="e#5535#5555#1#PHP" expanded="true" />
-                <element signature="e#5738#5748#1#PHP" expanded="true" />
+                <element signature="e#3120#3140#1#PHP" expanded="true" />
+                <element signature="e#3577#3597#1#PHP" expanded="true" />
+                <element signature="e#4018#4038#1#PHP" expanded="true" />
+                <element signature="e#4132#4149#1#PHP" expanded="true" />
+                <element signature="e#4314#4341#1#PHP" expanded="true" />
+                <element signature="e#5003#5023#1#PHP" expanded="true" />
+                <element signature="e#5134#5147#0#PHP" expanded="true" />
+                <element signature="e#5440#5460#1#PHP" expanded="true" />
+                <element signature="e#5572#5585#0#PHP" expanded="true" />
+                <element signature="e#5819#5832#0#PHP" expanded="true" />
+                <element signature="e#6037#6057#1#PHP" expanded="true" />
+                <element signature="e#6240#6250#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oneTask.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
+      <file leaf-file-name="allProjects.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.625">
-              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-              <folding>
-                <element signature="e#822#833#0#Twig" expanded="true" />
-                <element signature="e#1212#1222#0#Twig" expanded="true" />
-                <element signature="e#1662#1670#0#Twig" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oneProject.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46266234">
-              <caret line="19" column="11" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="11" />
+            <state vertical-scroll-proportion="-16.875">
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allArchiveTask.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allArchiveTask.html.twig">
+      <file leaf-file-name="ProjectRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.541667">
+              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+              <folding>
+                <marker date="1457081341074" expanded="true" signature="401:558" placeholder="SELECT p FRO... TaskBundle" />
+                <marker date="1457081341074" expanded="true" signature="790:922" placeholder="SELECT p FRO... TaskBundle" />
+                <marker date="1457081341074" expanded="true" signature="1111:1242" placeholder="SELECT p FRO... TaskBundle" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="allArchiveProject.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allArchiveProject.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="49" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
+              <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -133,48 +124,14 @@
       <file leaf-file-name="TaskRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.666667">
-              <caret line="33" column="47" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="47" />
+            <state vertical-scroll-proportion="-10.041667">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="41" selection-end-column="5" />
               <folding>
                 <marker date="1457019926089" expanded="true" signature="387:535" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="764:856" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="764:890" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="764:928" placeholder="SELECT t FRO... TaskBundle" />
                 <marker date="1457019926089" expanded="true" signature="1076:1201" placeholder="SELECT t FRO... TaskBundle" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatusControllerController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/StatusControllerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-93.166664">
-              <caret line="188" column="5" selection-start-line="188" selection-start-column="5" selection-end-line="188" selection-end-column="5" />
-              <folding>
-                <element signature="e#41#98#0#PHP" expanded="true" />
-                <element signature="e#1175#1190#1#PHP" expanded="true" />
-                <element signature="e#1488#1503#1#PHP" expanded="true" />
-                <element signature="e#1756#1768#1#PHP" expanded="true" />
-                <element signature="e#1996#2020#1#PHP" expanded="true" />
-                <element signature="e#2357#2381#1#PHP" expanded="true" />
-                <element signature="e#2488#2501#0#PHP" expanded="true" />
-                <element signature="e#2789#2813#1#PHP" expanded="true" />
-                <element signature="e#2921#2934#0#PHP" expanded="true" />
-                <element signature="e#3167#3179#1#PHP" expanded="true" />
-                <element signature="e#3364#3388#1#PHP" expanded="true" />
-                <element signature="e#3569#3581#1#PHP" expanded="true" />
-                <element signature="e#4291#4306#1#PHP" expanded="true" />
-                <element signature="e#4617#4632#1#PHP" expanded="true" />
-                <element signature="e#4885#4897#1#PHP" expanded="true" />
-                <element signature="e#5138#5165#1#PHP" expanded="true" />
-                <element signature="e#5515#5542#1#PHP" expanded="true" />
-                <element signature="e#5649#5662#0#PHP" expanded="true" />
-                <element signature="e#5960#5987#1#PHP" expanded="true" />
-                <element signature="e#6095#6108#0#PHP" expanded="true" />
-                <element signature="e#6341#6353#1#PHP" expanded="true" />
-                <element signature="e#6548#6575#1#PHP" expanded="true" />
-                <element signature="e#6756#6768#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -223,10 +180,8 @@
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/newTask.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/newProject.html.twig" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/newStatus.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Entity/Project.php" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Entity/Task.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/CommentController.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/StatusController.php" />
@@ -236,10 +191,13 @@
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allTask.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allArchieveTask.html.twig" />
-        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig" />
         <option value="$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allArchiveProject.html.twig" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig" />
+        <option value="$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php" />
       </list>
     </option>
   </component>
@@ -910,28 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6331169">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <marker date="1456997954272" expanded="true" signature="401:558" placeholder="SELECT p FRO... TaskBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/Task_Status.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.375">
           <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8766234">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -988,6 +928,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.625">
+          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="e#822#833#0#Twig" expanded="true" />
+            <element signature="e#1212#1222#0#Twig" expanded="true" />
+            <element signature="e#1662#1670#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allTask.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.916667">
@@ -996,9 +948,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.041667">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <marker date="1457019926089" expanded="true" signature="387:535" placeholder="SELECT t FRO... TaskBundle" />
+            <marker date="1457019926089" expanded="true" signature="764:856" placeholder="SELECT t FRO... TaskBundle" />
+            <marker date="1457019926089" expanded="true" signature="764:890" placeholder="SELECT t FRO... TaskBundle" />
+            <marker date="1457019926089" expanded="true" signature="764:928" placeholder="SELECT t FRO... TaskBundle" />
+            <marker date="1457019926089" expanded="true" signature="1076:1201" placeholder="SELECT t FRO... TaskBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/StatusControllerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-93.166664">
+        <state vertical-scroll-proportion="3.6298702">
           <caret line="188" column="5" selection-start-line="188" selection-start-column="5" selection-end-line="188" selection-end-column="5" />
           <folding>
             <element signature="e#41#98#0#PHP" expanded="true" />
@@ -1028,68 +994,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/TaskRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.666667">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="47" />
-          <folding>
-            <marker date="1457019926089" expanded="true" signature="387:535" placeholder="SELECT t FRO... TaskBundle" />
-            <marker date="1457019926089" expanded="true" signature="764:856" placeholder="SELECT t FRO... TaskBundle" />
-            <marker date="1457019926089" expanded="true" signature="764:890" placeholder="SELECT t FRO... TaskBundle" />
-            <marker date="1457019926089" expanded="true" signature="764:928" placeholder="SELECT t FRO... TaskBundle" />
-            <marker date="1457019926089" expanded="true" signature="1076:1201" placeholder="SELECT t FRO... TaskBundle" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allArchiveTask.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="49" selection-start-line="0" selection-start-column="49" selection-end-line="0" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/oneTask.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.625">
-          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-          <folding>
-            <element signature="e#822#833#0#Twig" expanded="true" />
-            <element signature="e#1212#1222#0#Twig" expanded="true" />
-            <element signature="e#1662#1670#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.75">
-          <caret line="108" column="25" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
-          <folding>
-            <element signature="e#41#75#0#PHP" expanded="true" />
-            <element signature="e#1916#1931#1#PHP" expanded="true" />
-            <element signature="e#2415#2430#1#PHP" expanded="true" />
-            <element signature="e#2838#2848#1#PHP" expanded="true" />
-            <element signature="e#3114#3134#1#PHP" expanded="true" />
-            <element signature="e#3516#3536#1#PHP" expanded="true" />
-            <element signature="e#3630#3647#1#PHP" expanded="true" />
-            <element signature="e#3812#3839#1#PHP" expanded="true" />
-            <element signature="e#4501#4521#1#PHP" expanded="true" />
-            <element signature="e#4632#4645#0#PHP" expanded="true" />
-            <element signature="e#4938#4958#1#PHP" expanded="true" />
-            <element signature="e#5070#5083#0#PHP" expanded="true" />
-            <element signature="e#5317#5330#0#PHP" expanded="true" />
-            <element signature="e#5535#5555#1#PHP" expanded="true" />
-            <element signature="e#5738#5748#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.125">
-          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+        <state vertical-scroll-proportion="-6.2916665">
+          <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
           <folding>
             <element signature="e#41#75#0#PHP" expanded="true" />
             <element signature="e#2128#2476#0#PHP" expanded="false" />
@@ -1113,11 +1021,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Entity/ProjectRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.541667">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <marker date="1457081341074" expanded="true" signature="401:558" placeholder="SELECT p FRO... TaskBundle" />
+            <marker date="1457081341074" expanded="true" signature="790:922" placeholder="SELECT p FRO... TaskBundle" />
+            <marker date="1457081341074" expanded="true" signature="1111:1242" placeholder="SELECT p FRO... TaskBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Task/allArchiveTask.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allArchiveProject.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="39" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/oneProject.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46266234">
-          <caret line="19" column="11" selection-start-line="17" selection-start-column="0" selection-end-line="19" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.19480519">
+          <caret line="8" column="19" selection-start-line="4" selection-start-column="4" selection-end-line="8" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Resources/views/Project/allProjects.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TaskBundle/Controller/ProjectController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65746754">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="e#41#75#0#PHP" expanded="true" />
+            <element signature="e#1916#1931#1#PHP" expanded="true" />
+            <element signature="e#2415#2430#1#PHP" expanded="true" />
+            <element signature="e#2838#2848#1#PHP" expanded="true" />
+            <element signature="e#3120#3140#1#PHP" expanded="true" />
+            <element signature="e#3577#3597#1#PHP" expanded="true" />
+            <element signature="e#4018#4038#1#PHP" expanded="true" />
+            <element signature="e#4132#4149#1#PHP" expanded="true" />
+            <element signature="e#4314#4341#1#PHP" expanded="true" />
+            <element signature="e#5003#5023#1#PHP" expanded="true" />
+            <element signature="e#5134#5147#0#PHP" expanded="true" />
+            <element signature="e#5440#5460#1#PHP" expanded="true" />
+            <element signature="e#5572#5585#0#PHP" expanded="true" />
+            <element signature="e#5819#5832#0#PHP" expanded="true" />
+            <element signature="e#6037#6057#1#PHP" expanded="true" />
+            <element signature="e#6240#6250#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

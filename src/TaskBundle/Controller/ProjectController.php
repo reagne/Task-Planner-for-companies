@@ -77,11 +77,24 @@ class ProjectController extends Controller
      * @Template("TaskBundle:Project:allProjects.html.twig")
      *
      */
-    public function allProjectsAction(){
+    public function allActiveProjectsAction(){
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
 
-        $projects = $repo->findAllProjectsByDueDate($user);
+        $projects = $repo->findAllProjectsWithActiveStatus($repo->findAllProjectsByDueDate($user));
+
+        return ['projects' => $projects];
+    }
+    /**
+     * @Route ("/archive/project", name="archiveProject")
+     * @Template("TaskBundle:Project:allArchiveProject.html.twig")
+     *
+     */
+    public function allNotActiveProjectsAction(){
+        $user = $this->getUser();
+        $repo = $this->getDoctrine()->getRepository('TaskBundle:Project');
+
+        $projects = $repo->findAllProjectsNotActiveStatus($repo->findAllProjectsByDueDate($user));
 
         return ['projects' => $projects];
     }

@@ -213,5 +213,4 @@ class TaskController extends Controller
         return $this->redirectToRoute('main');
     }
 
-// ARCHIWUM - zadań zrealizowanych
 }

@@ -23,7 +23,9 @@
                 {{ project.projectOwner }}
             </td>
             <td>
-                {{ project.projectStatus }}
+                {% if project.projectStatus != null %}
+                    {{ project.projectStatus.name }}
+                {% endif %}</p>
             </td>
             <td>
                 {% if project.dueDate != null %}

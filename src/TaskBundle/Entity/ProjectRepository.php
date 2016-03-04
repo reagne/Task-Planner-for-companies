@@ -23,4 +23,22 @@ class ProjectRepository extends EntityRepository
             ->setParameter('user', $user);
         return $query->getResult();
     }
+    public function findAllProjectsWithActiveStatus(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT p FROM TaskBundle:Project p
+            JOIN p.projectStatus s
+            WHERE s.id != 1
+            ORDER BY p.dueDate ASC');
+        return $query->getResult();
+    }
+    public function findAllProjectsNotActiveStatus(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+            SELECT p FROM TaskBundle:Project p
+            JOIN p.projectStatus s
+            WHERE s.id = 1
+            ORDER BY p.dueDate ASC');
+        return $query->getResult();
+    }
 }
