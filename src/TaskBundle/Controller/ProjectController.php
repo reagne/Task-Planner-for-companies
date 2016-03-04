@@ -109,17 +109,35 @@ class ProjectController extends Controller
         $repo2 = $this->getDoctrine()->getRepository('TaskBundle:Task');
         $tasks = $repo2->findByProject($id);
 
-        // Wykonanie projektu
         if($status != null){
             $repo3 = $this->getDoctrine()->getRepository('TaskBundle:Project_Status');
             $projectStatus = $repo3->find($status);
 
-            $project->setProjectStatus($projectStatus);
-            $end_date = date("Y-m-d H:i:s");
-            $project->setEndDate(new \DateTime($end_date));
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($project);
-            $em->flush();
+            // Wykonanie projektu
+            if($status == 1){
+                $project->setProjectStatus($projectStatus);
+                $end_date = date("Y-m-d H:i:s");
+                $project->setEndDate(new \DateTime($end_date));
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($project);
+                $em->flush();
+            }
+
+            // Wstrzymanie projektu
+            if($status == 3){
+                $project->setProjectStatus($projectStatus);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($project);
+                $em->flush();
+            }
+
+            // Uruchomienie projektu
+            if($status == 2){
+                $project->setProjectStatus($projectStatus);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($project);
+                $em->flush();
+            }
         }
 
         return['project' => $project, 'tasks' => $tasks];

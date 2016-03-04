@@ -30,5 +30,10 @@
     {% if project.projectOwner == app.user.username %}
         <button onclick="location.href='{{ path('editProject', {'id':project.id}) }}'">Edytuj projekt</button>
         <button onclick="location.href='{{ path('removeProject', {'id':project.id}) }}'">Usuń projekt</button>
+        {% if project.projectStatus.id == 3 %}
+            <button onclick="location.href='{{ path('showProject', {'id':project.id, 'status':2}) }}'">Ponów projekt</button>
+        {% elseif project.projectStatus.id == 2 %}
+            <button onclick="location.href='{{ path('showProject', {'id':project.id, 'status':3}) }}'">Wstrzymaj projekt</button>
+        {% endif %}
         <button onclick="location.href='{{ path('showProject', {'id':project.id, 'status':1}) }}'">Projekt zrealizowany</button>
     {% endif %}
